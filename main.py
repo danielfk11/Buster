@@ -9,6 +9,11 @@ RED   = "\033[1;31m"
 mytimeout = (2, 5)
 
 url = input('-> URL\n-> ')
+
+if "http" in url:
+    print("Informe a URL sem o HTTP\n -> [EXAMPLE][SITE.COM]")
+    exit()
+
 print('WORDLISTS ->', arqs)
 wrlist = input('-> WORDLIST\n-> ')
 
@@ -24,9 +29,9 @@ else:
         bust = buster
 
     for i in bust:
-        url_check = f'''https://{url}/{i}'''
+        url_check = f'''https://www.{url}/{i}'''
         r = requests.get(url_check)
-
+       
         if r.status_code == 200:
             print(GREEN,url_check, '[',r.status_code,']')
         else:
