@@ -7,6 +7,7 @@ Imports
     import requests
     import whois11
     import os
+    import time
 
 O que e?
 
