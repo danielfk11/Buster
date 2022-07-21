@@ -1,6 +1,7 @@
 import requests
 import whois11
 import os
+import time 
 
 arqs = [f for f in os.listdir('.') if os.path.isfile(os.path.join('.', f)) and f.endswith('.txt')]
 
@@ -19,6 +20,7 @@ wrlist = input('-> WORDLIST\n-> ')
 
 if wrlist not in arqs:
     print("Selecione uma wordlist valida!")
+    time.sleep(2)
     print("->", arqs)
     exit()
 
@@ -27,6 +29,9 @@ else:
         buster = buster.readlines()
         buster = list(map(lambda s: s.strip(), buster))
         bust = buster
+        
+    print("Iniciando busca...")
+    time.sleep(3)
 
     for i in bust:
         url_check = f'''https://www.{url}/{i}'''
@@ -56,7 +61,7 @@ else:
             continue    
 
 print("\033[0;0m")
-
+time.sleep(2)
 print("Criando html da URL..")    
 
 gethmtl = f'''https://{url}'''
@@ -66,24 +71,29 @@ html = rhtml.text
 try:
     with open('save.html', "w", encoding="utf-8") as htmltext:
         htmltext.write(html)
+        time.sleep(2)
         print("HTML criado em save.html")
 except:
     print("Nao foi possivel criar o arquivo html.")
 
-
+list_whois = ['S', 'N', 's', 'n']
 text_whois = input("Deseja procurar info pelo WHOIS11? \n-> Digite S para sim\n-> Digite N para nao\n-> ")
 
-if text_whois not in ['S', 'N']:
+if text_whois not in list_whois:
     print("Valor digitado incorretamente..")
     text_whois = input("Deseja procurar info pelo WHOIS11? \n-> Digite S para sim\n-> Digite N para nao\n-> ")
 
-if text_whois == 'S':
-    model = f'''[MODEL = {url}]'''
+if text_whois == 'S' or 's':
+    model = f'''[URL = {url}]'''
     print(model)
     print("Pegando informacoes da URL..")
+    time.sleep(2)
+    print("SUCESSO!")
+    time.sleep(3)
     print(whois11.whois(url))
 
-if text_whois == 'N':
+if text_whois == 'N' or 'n':
     print("Saindo...")
     exit()
+
 
