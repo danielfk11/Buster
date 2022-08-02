@@ -22,7 +22,7 @@ Como funciona?
 Ao iniciar o codigo ele ira perguntar a url que voce deseja buscar
 escolhendo a wordlist para buscar diretorios [/admin, /login, /index] apos finalizar ele vai pedir outra wordlist para buscar subdominios do site [admin.site.com.br, webmail.site.com.br] ao finalizar a busca ele salva o HTML principal da url no arquivo save.html e ao finalizar ele pergunta se quer mostrar informacoes do site como dominio, emails, etc...
 
-DOWNW
+downw.py
 
     Downloader de wordlists pelo rawcontent do github 
 
